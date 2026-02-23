@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "ESPN Dark Mode",
+  "version": "1.1.0",
+  "description": "A clean, carefully crafted dark theme for ESPN.com. Darkens backgrounds, fixes text contrast, and preserves team logos, images, and media.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.espn.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": ["storage"]
+}
