@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "ESPN Dark Mode",
-  "version": "1.1.0",
-  "description": "A clean, carefully crafted dark theme for ESPN.com. Darkens backgrounds, fixes text contrast, and preserves team logos, images, and media.",
+  "version": "1.2.0",
+  "description": "A clean, carefully crafted dark theme for ESPN.com. Darkens backgrounds, fixes text contrast, and preserves team logos, images, and media. Made by https://github.com/doinp9",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -20,7 +20,22 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*.espn.com/*"],
+      "matches": [
+        "*://*.espn.com/*",
+        "*://*.espn.co.uk/*",
+        "*://*.espn.com.br/*",
+        "*://*.espn.com.au/*",
+        "*://*.espn.com.ar/*",
+        "*://*.espn.com.mx/*",
+        "*://*.espn.com.co/*",
+        "*://*.espn.com.ve/*",
+        "*://*.espn.com.pe/*",
+        "*://*.espn.com.ec/*",
+        "*://*.espn.cl/*",
+        "*://*.espn.in/*",
+        "*://*.espndeportes.com/*",
+        "*://*.espncricinfo.com/*"
+      ],
       "js": ["content.js"],
       "run_at": "document_start"
     }
