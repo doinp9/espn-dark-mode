@@ -231,6 +231,25 @@
     color: ${C.text} !important;
   }
 
+  /* --- HeaderScoreboard fix (box score / game pages) ---
+     ESPN layers multiple divs inside HeaderScoreboard. The general
+     Scoreboard rules above paint bg2 on these inner divs, creating
+     opaque layers that cover live game content. Fix: force ALL inner
+     elements transparent — the outermost bg2 shows through.
+     These rules MUST come after the general rules to override them. */
+  [class*="HeaderScoreboard"] {
+    background-color: ${C.bg2} !important;
+  }
+  [class*="HeaderScoreboard"] div,
+  [class*="HeaderScoreboard"] a,
+  [class*="HeaderScoreboard"] span,
+  [class*="HeaderScoreboard"] section,
+  [class*="HeaderScoreboard"] ul,
+  [class*="HeaderScoreboard"] li {
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+
   /* Dividers & HRs */
   hr, [class*="divider"], [class*="Divider"],
   [class*="separator"], [class*="Separator"] {
@@ -287,8 +306,12 @@
     if (SKIP_TAGS.has(el.tagName)) return true;
     const cl = typeof el.className === "string" ? el.className : "";
     if (/\b(logo|icon|headshot|avatar|thumbnail|graphic|team-logo|Image)\b/i.test(cl)) return true;
-    // Skip elements inside SVGs
     if (el.closest && el.closest("svg")) return true;
+    // Skip HeaderScoreboard internals — CSS makes all inner elements
+    // transparent so the outer bg2 shows through. If the JS scanner
+    // processes these, it re-paints opaque bg2 on inner divs that
+    // cover live game content on box score pages.
+    if (el.closest && el.closest('[class*="HeaderScoreboard"]')) return true;
     return false;
   }
 
