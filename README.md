@@ -70,8 +70,6 @@ espn-dark-mode/
 
 ## Contributing
 
-Found a page that looks off? Open an issue with a screenshot and the ESPN URL — I'll fix it!
-
 Pull requests welcome.
 
 ## License
